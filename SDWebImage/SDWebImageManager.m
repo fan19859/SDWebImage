@@ -55,6 +55,9 @@
 }
 
 - (nullable NSString *)cacheKeyForURL:(nullable NSURL *)url {
+    //TODO: zhb 标记，这个地方被修改用于适应oss图片缓存
+    return url.relativePath;
+    /*
     if (!url) {
         return @"";
     }
@@ -64,6 +67,7 @@
     } else {
         return url.absoluteString;
     }
+    */
 }
 
 - (void)cachedImageExistsForURL:(nullable NSURL *)url
