@@ -54,15 +54,19 @@
 }
 
 - (NSString *)cacheKeyForURL:(NSURL *)url {
-    if (!url) {
-        return @"";
-    }
-    
-    if (self.cacheKeyFilter) {
-        return self.cacheKeyFilter(url);
-    } else {
-        return [url absoluteString];
-    }
+    //TODO: zhb 标记，这个地方被修改用于适应oss图片缓存
+    return url.relativePath;
+    /*
+     if (!url) {
+     return @"";
+     }
+     
+     if (self.cacheKeyFilter) {
+     return self.cacheKeyFilter(url);
+     } else {
+     return url.absoluteString;
+     }
+     */
 }
 
 - (BOOL)cachedImageExistsForURL:(NSURL *)url {
